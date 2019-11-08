@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<style>
+    * {
+        border-radius: 0 !important;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #F2F9FE;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="">From</label>
+                    <select name="" v-model="from" id="" class="form-control">
+                        <option :value="currency.id" v-for="currency in formattedCurrencies">{{currency.currencyName}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="">To</label>
+                    <select name="" v-model="to" id="" class="form-control">
+                        <option :value="currency.id" v-for="currency in formattedCurrencies">{{currency.currencyName}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <input type="text" v-model="amount" placeholder="Amount" class="form-control my-5">
+                    <div class="text-center">
+                        <button :disabled="disabled" @click="convertCurrency()" class="btn btn-lg btn-primary">
+                            {{ loading? "Converting....": "convert"}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <h1 class="text-center display-2 mt-5">{{culculateResult}}</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
